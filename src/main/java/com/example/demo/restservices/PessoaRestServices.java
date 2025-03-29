@@ -2,6 +2,7 @@ package com.example.demo.restservices; // Pacote onde a classe PessoaRestService
 
 import org.springframework.web.bind.annotation.GetMapping; // Importa a anotação para mapear o método GET
 import org.springframework.web.bind.annotation.PostMapping; // Importa a anotação para mapear o método POST
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody; // Importa a anotação para vincular o corpo da requisição ao parâmetro do método
 import org.springframework.web.bind.annotation.RequestMapping; // Importa a anotação para definir a URL base para os métodos
 import org.springframework.web.bind.annotation.RestController; // Importa a anotação para definir um controlador REST
@@ -41,6 +42,14 @@ public class PessoaRestServices {
         System.out.println("Pessoa inserida: " + pessoa); // Exibe a pessoa inserida no console
         
         return pessoa; // Retorna a pessoa recebida como resposta da requisição POST
+    }
+
+    @PutMapping("/pessoas")
+    public Pessoa atualizarPessoa(@RequestBody @Valid Pessoa pessoa) {
+        // Recebe um objeto Pessoa no corpo da requisição e valida se ele é válido (usando a anotação @Valid)
+        System.out.println("Pessoa atualizada: " + pessoa); // Exibe a pessoa atualizada no console
+        
+        return pessoa; // Retorna a pessoa recebida como resposta da requisição PUT
     }
 }
 
