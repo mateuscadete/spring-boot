@@ -12,6 +12,18 @@ import com.example.demo.model.Aluno;
 
 import jakarta.validation.Valid;
 
+/**
+ * Classe responsável por fornecer serviços REST relacionados à entidade Aluno.
+ * Esta classe expõe endpoints para obter a lista de alunos e inserir um novo aluno.
+ * 
+ * Endpoints disponíveis:
+ * - GET /api/v1/alunos: Retorna uma lista de alunos.
+ * - POST /api/v1/alunos: Insere um novo aluno e retorna os dados do aluno inserido.
+ * 
+ * Anotações:
+ * - @RestController: Indica que esta classe é um controlador REST.
+ * - @RequestMapping("/api/v1"): Define o prefixo de URL para os endpoints desta classe.
+ */
 @RestController
 @RequestMapping("/api/v1")
 public class AlunoRestServices {
