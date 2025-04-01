@@ -19,12 +19,12 @@ import jakarta.validation.Valid; // Importa a anotação para validar o objeto P
 @RestController
 @RequestMapping("/api/v1") // Define a URL base para as requisições como /api/v1
 public class PessoaRestServices {
+    // Cria uma lista de pessoas
+    List<Pessoa> pessoas = new ArrayList<>();
 
     // Método para responder à requisição GET na URL /api/v1/pessoas
     @GetMapping("/pessoas")
     public List<Pessoa> getPessoas() {
-        // Cria uma lista de pessoas
-        List<Pessoa> pessoas = new ArrayList<>();
         
         // Adiciona algumas pessoas (Alunos e Professores) à lista
         pessoas.add(new Aluno("João", 20, "123.456.789-00", "123-n")); // Adiciona um aluno
@@ -39,18 +39,10 @@ public class PessoaRestServices {
     @PostMapping("/pessoas")
     public Pessoa inserirPessoa(@RequestBody @Valid Pessoa pessoa) {
         // Recebe um objeto Pessoa no corpo da requisição e valida se ele é válido (usando a anotação @Valid)
-        System.out.println("Pessoa inserida: " + pessoa); // Exibe a pessoa inserida no console
-        
+        pessoas.add(pessoa); // Adiciona a pessoa recebida à lista de pessoas
         return pessoa; // Retorna a pessoa recebida como resposta da requisição POST
     }
 
-    @PutMapping("/pessoas")
-    public Pessoa atualizarPessoa(@RequestBody @Valid Pessoa pessoa) {
-        // Recebe um objeto Pessoa no corpo da requisição e valida se ele é válido (usando a anotação @Valid)
-        System.out.println("Pessoa atualizada: " + pessoa); // Exibe a pessoa atualizada no console
-        
-        return pessoa; // Retorna a pessoa recebida como resposta da requisição PUT
-    }
 }
 
 

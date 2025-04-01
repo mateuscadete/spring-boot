@@ -16,12 +16,12 @@ import jakarta.validation.Valid; // Importa a anotação para validar o objeto P
 @RestController
 @RequestMapping("/api/v1") // Define a URL base para as requisições como /api/v1
 public class ProfessorRestServices {
+    // Cria uma lista de professores
+    List<Professor> professores = new ArrayList<>();
 
     // Método para responder à requisição GET na URL /api/v1/professores
     @GetMapping("/professores")
     public List<Professor> getProfessores() {
-        // Cria uma lista de professores
-        List<Professor> professores = new ArrayList<>();
         
         // Adiciona alguns professores à lista
         professores.add(new Professor("João", 20, "123.456.789-00", "123")); // Adiciona um professor
@@ -35,8 +35,7 @@ public class ProfessorRestServices {
     @PostMapping("/professores")
     public Professor inserirProfessor(@RequestBody @Valid Professor professor) {
         // Recebe um objeto Professor no corpo da requisição e valida se ele é válido (usando a anotação @Valid)
-        System.out.println("Professor inserido: " + professor); // Exibe o professor inserido no console
-        
+        professores.add(professor); // Adiciona o professor recebido à lista de professores
         return professor; // Retorna o professor recebido como resposta da requisição POST
     }
 

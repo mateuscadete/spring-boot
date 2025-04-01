@@ -27,9 +27,10 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/v1")
 public class AlunoRestServices {
+    List<Aluno> alunos = new ArrayList<>();
+
     @GetMapping("/alunos")
     public List<Aluno> getAlunos() {
-        List<Aluno> alunos = new ArrayList<>();
         alunos.add(new Aluno ("João", 20, "123.456.789-00", "123-n"));
         alunos.add(new Aluno ("Maria", 21, "987.654.321-00", "456-n"));
         alunos.add(new Aluno ("José", 22, "456.789.123-00",     "789"));
@@ -38,7 +39,8 @@ public class AlunoRestServices {
 
     @PostMapping("/alunos")
     public Aluno inserirAluno(@RequestBody @Valid Aluno aluno) {
-        System.out.println("Aluno inserido: " + aluno);
+        //Adiciona o aluno a lista de alunos
+        alunos.add(aluno);
         return aluno;
     }
 }
